@@ -76,8 +76,9 @@ function placeOrder() {
 // slider start
 window.addEventListener("DOMContentLoaded", () => {
   const images = [
-    "/img/slider1.png",
-    "/img/slider4.png",
+    "./img/slider1.png",
+    "./img/slider4.png",
+
   ];
 
   let current = 0;
