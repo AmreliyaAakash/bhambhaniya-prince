@@ -1,0 +1,424 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Varela Round", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #f6f6f6;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1px;
+  max-width: 500px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.nav-box {
+  display: flex;
+  margin: -20px;
+  padding: 8px  ;
+  background-color: #fff;
+  box-shadow: 0px 0px 16px 0px rgba(68, 68, 68, 0.27);
+  border-radius: 8px;
+}
+
+.nav-container {
+  display: flex;
+  width: 100%;
+  list-style: none;
+  justify-content: space-around;
+}
+
+.nav__item {
+  display: flex;
+  position: relative;
+  padding: 2px;
+}
+
+.nav__item.active .nav__item-icon {
+  margin-top: -26px;
+  box-shadow: 0px 0px 16px 0px rgba(68, 68, 68, 0.27);
+}
+
+.nav__item.active .nav__item-text {
+  transform: scale(1);
+}
+
+.nav__item-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #2f3046;
+  text-decoration: none;
+}
+
+.nav__item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6em;
+  background-color: #fff;
+  border-radius: 50%;
+  height: 46px;
+  width: 46px;
+  transition: margin-top 250ms ease-in-out, box-shadow 250ms ease-in-out;
+}
+
+.nav__item-text {
+  position: absolute;
+  bottom: 0;
+  transform: scale(0);
+  transition: transform 250ms ease-in-out;
+}
+.nav-container i:hover{
+    color: rgba(254,219,3);
+    
+    
+}
+
+/* slide bar */
+.slide-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    color: rgb(233, 226, 226);
+}
+#menuToggle1 {
+  display: block;
+  /* You can also use relative/absolute here if you want to stay on the top */
+  position: fixed;
+  top: 57px;
+  left: 50px;
+
+  z-index: 1;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle1 a {
+  text-decoration: none;
+  color: #232323;
+
+  transition: color 0.3s ease;
+}
+
+#menuToggle1 a:hover {
+  color: rgba(254,219,3);
+  font-size: 24px;
+    transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+#menuToggle1 input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -47px;
+  left: -44px;
+  cursor: pointer;
+
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle1 span {
+  top: -44px;
+  left: -42px;
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+
+  background: #ffffff;
+  border-radius: 3px;
+
+  z-index: 1;
+
+  transform-origin: 4px 0px;
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+
+#menuToggle1 span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle1 span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle1 input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle1 input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle1 input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+
+#menu {
+  
+  position: fixed;
+  max-width: 400px;
+  width: 100vw;
+  max-height: 100vh;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 62px;
+  padding-bottom: 337px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+#menu li label {
+  cursor: pointer;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle1 input:checked ~ ul {
+  transform: none;
+}
+.slide-bar::after {
+    
+    content: "";
+    display: block;
+    
+    height: 120px;
+    background-color: rgb(243, 225, 110);
+    width: 100%;
+    margin-bottom: 11px;/* spacing from content */
+  }
+
+  .test{
+    margin-top: 158px;
+    margin-bottom: 12vh;
+  }
+ 
+  .ln-1{
+    width: 80%;
+    margin: auto;
+  }
+
+  
+  .like-notification {
+    color: white;
+    position: absolute;
+    right: 10px;
+    display: flex;
+    gap: 10px; /* Space between icons */
+    font-size: 32px;
+    padding: 3px 4px;
+    border-radius: 8px;
+    
+    z-index: 1000;
+  }
+  
+  @media (max-width: 768px) {
+    .like-notification {
+      right: 10px;
+    }
+  }
+  
+
+  
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 40px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.search-input {
+  border: none;
+  flex: 1;
+  outline: none;
+  box-shadow: none;
+}
+
+.search-input:focus {
+  box-shadow: none;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  margin-left: 12px;
+  color: #333;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  color: #007bff;
+}
+
+#voiceBtn.listening i {
+  color: red;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.search1bar{
+    position: fixed;
+    top:50px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    color: rgb(233, 226, 226);
+}
+/* Hide with fade and transition */
+.search1bar,
+.like-notification {
+  transition: opacity 0.3s ease, visibility 0.3s ease-in-out;
+  opacity: 1;
+  visibility: visible;
+}
+
+body.menu-open .search1bar,
+body.menu-open .like-notification {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.suggest-products img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+}
+
+.categories i {
+  color: #000;
+  transition: transform 0.3s ease;
+}
+
+.categories i:hover {
+  transform: scale(1.2);
+}
+
+img12{
+  height: 10%;
+  object-fit: cover;
+}
+
+/* slider start */
+
+
+.slider {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  aspect-ratio: 3 / 2; /* Keeps it responsive */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+}
+
+#slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  right: 12px;
+  left: 0;
+  height: 5px;
+  background-color: #979a99;
+  width: 0%;
+  /* REMOVE: animation: fillBar 2s linear infinite; */
+}
+
+/* Animations */
+@keyframes fillBar {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Mobile adjustments (optional extra tweaks) */
+@media (max-width: 500px) {
+  .slider {
+    width: 95%;
+    border-radius: 8px;
+  }
+
+  .progress-bar {
+    height: 4px;
+  }
+}
+
+/* slider end */
